@@ -3,17 +3,21 @@ import { useContexto } from "../../context/Context";
 import BasicButtons from "../Button/ButtonComponent";
 import Typography from "@mui/material/Typography";
 import { TitleStyle, numberStyleItem } from "./OrderSummaryStyle";
+import { Product } from "../../interface/Product/Products";
 
-function OrderSummary() {
+function OrderSummary(): JSX.Element {
   const { cart } = useContexto();
 
   const [totalPrices, setTotalPrices] = useState<number>(0);
 
   useEffect(() => {
     setTotalPrices(
-      cart.reduce((sum, element) => sum + Number(element.totalPrice), 0)
+      cart.reduce(
+        (sum: number, element: Product) => sum + Number(element.totalPrice),
+        0
+      )
     );
-  }, []);
+  }, [cart]);
 
   return (
     <div className="mt-5 space-y-5 h-full px-5">

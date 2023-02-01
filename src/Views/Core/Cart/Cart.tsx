@@ -18,7 +18,7 @@ import {
 import { useState, useEffect } from "react";
 
 function Cart(): JSX.Element {
-  const { cart } = useContexto();
+  const { cart, setCart } = useContexto();
 
   const [category, setCategoty] = useState<Product[]>([]);
 
@@ -40,6 +40,12 @@ function Cart(): JSX.Element {
       });
   }, []);
 
+  const eliminatedItems = (value: number) => {
+    const newCart = [...cart];
+    newCart.splice(value, 1);
+    setCart(newCart);
+  };
+
   return (
     <div className="w-full">
       <div className="flex w-full">
@@ -53,10 +59,14 @@ function Cart(): JSX.Element {
 
           <PackageCart />
 
-          {cart.map((element: Product) => {
+          {cart.map((element: Product, index: number) => {
             return (
               <div key={element.id}>
-                <ItemProduct product={element} />
+                <ItemProduct
+                  product={element}
+                  index={index}
+                  eliminatedItems={() => eliminatedItems(index)}
+                />
               </div>
             );
           })}

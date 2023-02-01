@@ -12,14 +12,21 @@ import Typography from "@mui/material/Typography";
 import ArrowIcon from "../../assets/icons/Arrow.svg";
 import Wastebasket from "../../assets/icons/Wastebasket.svg";
 import { Product } from "../../interface/Product/Products";
+import { useContexto } from "../../context/Context";
 interface Props {
   product: Product;
+  index: number;
+  eliminatedItems: () => void;
 }
 
-const ItemProduct: React.FC<Props> = ({ product }): JSX.Element => {
+const ItemProduct: React.FC<Props> = ({
+  product,
+  index,
+  eliminatedItems,
+}): JSX.Element => {
   const [open, setOpen] = useState<boolean>(false);
+  const { cart, setCart } = useContexto();
 
-  const [basicQuentity, setBasicQuentity] = useState<number>(1);
   const [quentityNumber, setQuentityNumber] = useState<number[]>([
     1, 2, 3, 4, 5,
   ]);
@@ -28,7 +35,21 @@ const ItemProduct: React.FC<Props> = ({ product }): JSX.Element => {
   };
 
   const valueQuentity = (value: number) => {
-    setBasicQuentity(value);
+    const index = cart.findIndex((item) => item.title === product.title);
+
+    if (index !== -1) {
+      // actualiza la cantidad
+      const updatedProduct = {
+        ...cart[index],
+        quantity: value,
+        totalPrice: product.price * value,
+      };
+      setCart([
+        ...cart.slice(0, index),
+        updatedProduct,
+        ...cart.slice(index + 1),
+      ]);
+    }
   };
 
   return (
@@ -76,9 +97,10 @@ const ItemProduct: React.FC<Props> = ({ product }): JSX.Element => {
               </Typography>
               {open ? (
                 <span className="space-x-1 bg-slate-200 cursor-pointer ml-2">
-                  {quentityNumber.map((element: number) => {
+                  {quentityNumber.map((element: number, i: number) => {
                     return (
                       <span
+                        key={i}
                         onClick={() => valueQuentity(element)}
                         className="z-20 hover:bg-sky-700 hover:text-white"
                       >
@@ -96,13 +118,15 @@ const ItemProduct: React.FC<Props> = ({ product }): JSX.Element => {
             </Typography>
           </div>
 
-          <div className="flex space-x-3 mt-7">
+          <div
+            className="flex space-x-3 mt-7 cursor-pointer"
+            onClick={eliminatedItems}
+          >
             <img src={Wastebasket} width="20" />
             <p>Remove</p>
           </div>
         </Box>
       </Box>
-
       <hr className="my-10" />
     </Box>
   );

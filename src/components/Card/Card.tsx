@@ -30,6 +30,10 @@ const MultiActionAreaCard: React.FC<Props> = ({
     const totalPrice: number = value.price * quantity;
     const newCartElement: Product = { ...value, quantity, totalPrice };
 
+    if (cart.some((product: Product) => product.id === newCartElement.id)) {
+      return;
+    }
+
     setCart([...cart, newCartElement]);
   };
   const [count, setCount] = useState<number>(1);
