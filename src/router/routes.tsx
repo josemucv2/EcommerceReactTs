@@ -9,13 +9,13 @@ function Router() {
 
   return (
     <Routes>
-      <Route path={ROUTES.path} element={ROUTES.component()}>
+      <Route path={ROUTES.path} element={<ROUTES.component />}>
         {ROUTES.children.map((element: CHILDREN) => {
           return (
             <Route
               key={element._id}
               path={element.path}
-              element={element.element()}
+              element={<element.element />}
             />
           );
         })}

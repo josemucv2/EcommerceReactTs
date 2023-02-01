@@ -1,4 +1,88 @@
-* {
-  margin: 0;
-  padding: 0;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.text-general {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 16px;
+}
+
+.text-general-bold {
+  font-weight: bold !important;
+}
+
+.color-text-primary {
+  color: #535c67;
+}
+
+.color-blue {
+  color: #091625;
+}
+
+.list-style {
+  list-style: inside;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.box-image {
+  width: 250px;
+  height: 250px;
+}
+
+.title-footer {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height, or 150% */
+
+  /* Dark 01 */
+
+  color: #091625;
+}
+
+.itemsListFooter {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 16px;
+  /* identical to box height, or 107% */
+
+  /* Dark 03 */
+
+  color: #3a4451;
+}
+
+.text-unidet-state {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  /* identical to box height, or 114% */
+
+  /* Dark 04 */
+
+  color: #535c67;
+}
+
+.text-black-united {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 16px;
+  /* identical to box height, or 114% */
+
+  text-align: right;
+
+  /* Dark 01 */
+
+  color: #091625;
 }
