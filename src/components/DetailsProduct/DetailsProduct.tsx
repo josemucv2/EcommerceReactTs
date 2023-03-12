@@ -9,7 +9,7 @@ import Typography from "@mui/material/Typography";
 import { useContexto } from "../../context/Context";
 
 interface Props {
-  product: Product;
+  product: Product | any;
 }
 
 const DetailsProduct: React.FC<Props> = ({ product }) => {

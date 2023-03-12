@@ -9,7 +9,6 @@ import { getDoc, collection, doc, DocumentData } from "firebase/firestore";
 
 function ProductById() {
   const { id } = useParams();
-  console.log(id, "ljnsalnad");
   let [product, setProduct] = useState<Array<Product>>([]);
 
   useEffect(() => {
