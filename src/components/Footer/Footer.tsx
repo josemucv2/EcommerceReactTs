@@ -7,7 +7,7 @@ import Instagram from "../../assets/icons/Instagram.svg";
 import Facebook from "../../assets/icons/Facebook.svg";
 import Twitter from "../../assets/icons/Twitter.svg";
 import Youtube from "../../assets/icons/Youtube.svg";
-import LinkedIn from "../../assets/icons/LinkedIn.svg";
+import LinkedIn from "../../assets/icons/Linkedin.svg";
 import UnitedSTate from "../../assets/icons/UnitedSTate.svg";
 import Arrow from "../../assets/icons/Arrow.svg";
 
